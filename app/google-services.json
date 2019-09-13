@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "958743791224",
+    "firebase_url": "https://djesba-b94df.firebaseio.com",
+    "project_id": "djesba-b94df",
+    "storage_bucket": "djesba-b94df.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:958743791224:android:faa9a6e0305a8d6ffa0f8d",
+        "android_client_info": {
+          "package_name": "mk.ukim.finki.djesba"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "958743791224-6b65d1279hf1eg0jsgm6rp7tp6lgl0er.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "mk.ukim.finki.djesba",
+            "certificate_hash": "9c16da25696dd8f98f62ecbed7c98d2a13912825"
+          }
+        },
+        {
+          "client_id": "958743791224-v6brciih0euo3e3sah7qvvetcshsvk1h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKt5czs7k4_JRqxnjiGJOyE_McwTFUOJQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "958743791224-v6brciih0euo3e3sah7qvvetcshsvk1h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
