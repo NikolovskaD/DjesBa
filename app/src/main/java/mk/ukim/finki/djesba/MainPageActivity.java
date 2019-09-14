@@ -30,7 +30,9 @@ public class MainPageActivity extends AppCompatActivity {
     private RecyclerView.Adapter mChatListAdapter;
     private RecyclerView.LayoutManager mChatListLayoutManager;
 
-    ArrayList<ChatObject> chatList = new ArrayList<ChatObject>();
+    //ArrayList<ChatObject> chatList = new ArrayList<ChatObject>();
+    ArrayList<ChatObject> chatList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,6 +95,7 @@ public class MainPageActivity extends AppCompatActivity {
     }
 
     private void initializeRecyclerView() {
+        chatList = new ArrayList<>();
         mChatList = findViewById(R.id.chatList);
         //to scroll seamlessly
         mChatList.setNestedScrollingEnabled(false);
