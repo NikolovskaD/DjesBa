@@ -4,6 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import mk.ukim.finki.djesba.User.UserListAdapter;
+import mk.ukim.finki.djesba.User.UserObject;
+import mk.ukim.finki.djesba.Utils.CountryToPhonePrefix;
 
 import android.database.Cursor;
 import android.os.Bundle;
@@ -54,7 +57,7 @@ public class FindUserActivity extends AppCompatActivity {
             if (!String.valueOf(phone.charAt(0)).equals("+"))
                 phone = ISOprefix + phone;
 
-            UserObject mContact = new UserObject(name,phone);
+            UserObject mContact = new UserObject("",name,phone);
             contactList.add(mContact);
 
             getUserDetails(mContact);
@@ -78,7 +81,7 @@ public class FindUserActivity extends AppCompatActivity {
                             name = childSnapshot.child("name").getValue().toString();
                         }
 
-                        UserObject mUser = new UserObject(name,phone);
+                        UserObject mUser = new UserObject(childSnapshot.getKey(),name,phone);
                         if (name.equals(phone)){
                             for (UserObject mContactIterator : contactList){
                                 if (mContactIterator.getPhone().equals(mUser.getPhone())){

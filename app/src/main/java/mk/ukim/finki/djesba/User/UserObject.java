@@ -1,10 +1,12 @@
-package mk.ukim.finki.djesba;
+package mk.ukim.finki.djesba.User;
 
 public class UserObject {
     private String name;
     private String phone;
+    private String uid;
 
-    public UserObject(String name, String phone) {
+    public UserObject(String uid, String name, String phone) {
+        this.uid = uid;
         this.name = name;
         this.phone = phone;
     }
@@ -15,6 +17,10 @@ public class UserObject {
 
     public String getPhone() {
         return phone;
+    }
+
+    public String getUid() {
+        return uid;
     }
 
     public void setName(String name) {

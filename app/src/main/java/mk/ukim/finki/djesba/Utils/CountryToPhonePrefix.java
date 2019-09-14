@@ -1,4 +1,4 @@
-package mk.ukim.finki.djesba;
+package mk.ukim.finki.djesba.Utils;
 
 import java.util.HashMap;
 import java.util.Map;
