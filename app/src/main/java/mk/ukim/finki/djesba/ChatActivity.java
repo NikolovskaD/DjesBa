@@ -11,17 +11,22 @@ import mk.ukim.finki.djesba.Chat.MessageAdapter;
 import mk.ukim.finki.djesba.Chat.MessageObject;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -113,19 +118,61 @@ public class ChatActivity extends AppCompatActivity {
         });
     }
 
-    private void sendMessage(){
-        EditText mMessage = findViewById(R.id.messageInput);
+    int totalMediaUploaded = 0;
+    ArrayList <String> mediaIdList = new ArrayList<>();
+    EditText mMessage;
 
-        if(!mMessage.getText().toString().isEmpty()){
-            DatabaseReference newMessageDb = mChatDb.push();
-            Map newMessageMap = new HashMap<>();
-            newMessageMap.put("text", mMessage.getText().toString());
+    private void sendMessage(){
+        mMessage = findViewById(R.id.messageInput);
+
+            String messageId = mChatDb.push().getKey();
+            final DatabaseReference newMessageDb = mChatDb.child(messageId);
+
+            final Map newMessageMap = new HashMap<>();
+
             newMessageMap.put("creator", FirebaseAuth.getInstance().getUid());
 
-            newMessageDb.updateChildren(newMessageMap);
+            if(!mMessage.getText().toString().isEmpty())
+                newMessageMap.put("text", mMessage.getText().toString());
 
-        }
+            if(!mediaUriList.isEmpty()){
+                for (String mediaUri : mediaUriList){
+                    String mediaId = newMessageDb.child("media").push().getKey();
+                    mediaIdList.add(mediaId);
+                    final StorageReference filePath = FirebaseStorage.getInstance().getReference().child("chat").child(chatID).child(messageId).child(mediaId);
+
+                    UploadTask uploadTask = filePath.putFile(Uri.parse(mediaUri));
+
+                    uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            filePath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    newMessageMap. put("/media/" + mediaIdList.get(totalMediaUploaded) + "/", uri.toString());
+
+                                    totalMediaUploaded++;
+                                    if(totalMediaUploaded == mediaUriList.size()){
+                                        updateDatabaseWithNewMessage(newMessageDb, newMessageMap);
+                                    }
+                                }
+                            });
+                        }
+                    });
+                }
+            }else{
+                if(!mMessage.getText().toString().isEmpty())
+                    updateDatabaseWithNewMessage(newMessageDb, newMessageMap);
+            }
         mMessage.setText(null);
+    }
+
+    private void updateDatabaseWithNewMessage(DatabaseReference newMessageDb, Map newMessageMap){
+        newMessageDb.updateChildren(newMessageMap);
+        mMessage.setText(null);
+        mediaUriList.clear();
+        mediaIdList.clear();
+        mMediaAdapter.notifyDataSetChanged();
     }
 
     private void initializeMessage() {
@@ -148,7 +195,7 @@ public class ChatActivity extends AppCompatActivity {
     ArrayList<String> mediaUriList = new ArrayList<>();
 
     private void initializeMedia() {
-        messageList = new ArrayList<>();
+        mediaUriList = new ArrayList<>();
         mMedia= findViewById(R.id.mediaList);
         //to scroll seamlessly
         mMedia.setNestedScrollingEnabled(false);

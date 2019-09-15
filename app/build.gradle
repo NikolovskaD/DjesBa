@@ -31,6 +31,7 @@ dependencies {
     //megjutoa veke nema core, sega e toa vgradeno vo analytics
     implementation 'com.google.firebase:firebase-auth:19.0.0'
     implementation 'com.google.firebase:firebase-analytics:17.2.0'
+    implementation 'com.google.firebase:firebase-storage:19.0.1'
 
     // android.support:design treba da e ista verzija so appcompat, ali kaj nas e android x?
     implementation 'com.android.support:design:28.0.0'    // 27.1.1
