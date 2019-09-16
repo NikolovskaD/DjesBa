@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ChatActivity"></activity>
-        <activity android:name=".FindUserActivity" />
         <activity android:name=".MainPageActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>

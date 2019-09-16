@@ -1,18 +1,19 @@
-package mk.ukim.finki.djesba;
+package mk.ukim.finki.djesba.Fragments;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import mk.ukim.finki.djesba.User.UserListAdapter;
-import mk.ukim.finki.djesba.User.UserObject;
-import mk.ukim.finki.djesba.Utils.CountryToPhonePrefix;
 
 import android.database.Cursor;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.provider.ContactsContract;
 import android.telephony.TelephonyManager;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,7 +27,15 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class FindUserActivity extends AppCompatActivity {
+import mk.ukim.finki.djesba.R;
+import mk.ukim.finki.djesba.User.UserListAdapter;
+import mk.ukim.finki.djesba.User.UserObject;
+import mk.ukim.finki.djesba.Utils.CountryToPhonePrefix;
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class ContactsFragment extends Fragment {
 
     private RecyclerView mUserList;
     private RecyclerView.Adapter mUserListAdapter;
@@ -34,24 +43,33 @@ public class FindUserActivity extends AppCompatActivity {
 
     ArrayList<UserObject> contactList, userList;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_find_user);
+    public ContactsFragment() {
+        // Required empty public constructor
+    }
 
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_contacts, container, false);
         contactList = new ArrayList<>();
         userList = new ArrayList<>();
 
-        Button mCreate = findViewById(R.id.create);
+        mUserList = view.findViewById(R.id.userList);
+        mUserList.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        Button mCreate = view.findViewById(R.id.create);
         mCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 createChat();
             }
         });
-
         initializeRecyclerView();
         getContactList();
+
+        return view;
     }
 
     private void createChat(){
@@ -83,7 +101,7 @@ public class FindUserActivity extends AppCompatActivity {
 
     private void getContactList(){
         String ISOprefix = getCountryISO();
-        Cursor phones = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,null,null,null,null);
+        Cursor phones = mUserList.getContext().getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,null,null,null,null);
         while (phones.moveToNext()){
             String name = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
             String phone = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
@@ -149,7 +167,7 @@ public class FindUserActivity extends AppCompatActivity {
     private String getCountryISO(){
         String iso = null;
 
-        TelephonyManager telephonyManager = (TelephonyManager) getApplicationContext().getSystemService(getApplicationContext().TELEPHONY_SERVICE);
+        TelephonyManager telephonyManager = (TelephonyManager) mUserList.getContext().getSystemService(mUserList.getContext().TELEPHONY_SERVICE);
         if (telephonyManager.getNetworkCountryIso() != null){
             if (!telephonyManager.getNetworkCountryIso().toString().equals("")){
                 iso = telephonyManager.getNetworkCountryIso().toString();
@@ -160,15 +178,15 @@ public class FindUserActivity extends AppCompatActivity {
     }
 
     private void initializeRecyclerView() {
-        mUserList = findViewById(R.id.userList);
         //to scroll seamlessly
         mUserList.setNestedScrollingEnabled(false);
         mUserList.setHasFixedSize(false);
 
-        mUserListLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false);
+        mUserListLayoutManager = new LinearLayoutManager(mUserList.getContext(),LinearLayoutManager.VERTICAL,false);
         mUserList.setLayoutManager(mUserListLayoutManager);
 
         mUserListAdapter= new UserListAdapter(userList);
         mUserList.setAdapter(mUserListAdapter);
     }
+
 }
