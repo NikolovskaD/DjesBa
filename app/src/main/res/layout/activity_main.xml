@@ -5,24 +5,58 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".LoginActivity">
+    tools:context=".LoginActivity"
+    android:background="@drawable/gradient_bg"
+    android:gravity="center">
 
-    <EditText
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/profile_image"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/rocket2"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#FF000000"
+        />
+
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Enter Phone Number"
-        android:id="@+id/etPhoneNumber" />
+        android:textSize="30dp"
+        android:padding="10dp"
+        android:text="DjesBa" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:id="@+id/etPhoneNumber"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:hint="Enter Phone Number"
+        android:textColorHint="#11001a"
+        />
+
+    <EditText
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:hint="Enter Code"
-        android:id="@+id/etCode" />
+        android:id="@+id/etCode"
+        android:layout_marginBottom="50dp"
+        android:textColorHint="#11001a"
+        />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Send verification Code"
-        android:id="@+id/btnSendVerificationCode" />
+        android:id="@+id/btnSendVerificationCode"
+        android:textColor="#fff"
+        android:padding="20dp"
+        android:background="@drawable/custom_button"
+        android:textAllCaps="false"
+        android:textSize="18dp"/>
+
+
+
 
 </LinearLayout>
