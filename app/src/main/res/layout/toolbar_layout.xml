@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.Toolbar
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="?attr/colorPrimary"
     android:id="@+id/toolBar"
     android:elevation="4dp"
+    app:titleTextColor="#FFA89DCC"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Logout"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
         android:id="@+id/btnLogout"
         android:layout_gravity="right"
         android:textColor="#FFF"
         android:padding="20dp"
-        android:background="@drawable/custom_button" />
+        android:background="@drawable/ic_logout" />
 
 </androidx.appcompat.widget.Toolbar>

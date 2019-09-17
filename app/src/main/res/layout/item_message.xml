@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:background="@drawable/gradient2">
 
     <LinearLayout
@@ -23,9 +24,9 @@
             android:background="#000000"/>
     </LinearLayout>
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="View Media"
-        android:id="@+id/viewMedia"/>
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:id="@+id/viewMedia"
+        android:background="@drawable/ic_view_media" />
 
 </LinearLayout>

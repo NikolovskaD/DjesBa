@@ -20,8 +20,9 @@
         android:id="@+id/create"
         android:text="Create Chat Room"
         android:layout_gravity="center|bottom"
-        android:textColor="#FFF"
+        android:textColor="#FFA89DCC"
         android:padding="20dp"
-        android:background="@drawable/custom_button"/>
+        android:layout_margin="20dp"
+        android:background="@drawable/custom_button2"/>
 
 </FrameLayout>

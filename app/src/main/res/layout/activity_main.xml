@@ -34,7 +34,7 @@
         android:layout_marginTop="70dp"
         android:hint="Enter Phone Number"
         android:textColorHint="#11001a"
-        />
+        android:inputType="phone"/>
 
     <EditText
         android:layout_width="200dp"
