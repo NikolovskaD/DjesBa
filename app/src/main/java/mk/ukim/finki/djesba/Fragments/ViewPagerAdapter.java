@@ -22,12 +22,12 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
                 return chatsFragment;
 
             case 1:
-                GroupsFragment groupsFragment = new GroupsFragment();
-                return groupsFragment;
-
-            case 2:
                 ContactsFragment contactsFragment = new ContactsFragment();
                 return contactsFragment;
+
+            /*case 2:
+                GroupsFragment groupsFragment = new GroupsFragment();
+                return groupsFragment;*/
 
             default:
                 return null;
@@ -38,7 +38,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount()
     {
-        return 3;
+        return 2;
     }
 
 
@@ -52,10 +52,10 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
                 return "Chats";
 
             case 1:
-                return "Groups";
-
-            case 2:
                 return "Contacts";
+
+            /*case 2:
+                return "Groups";*/
 
             default:
                 return null;
