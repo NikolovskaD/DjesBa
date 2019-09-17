@@ -12,12 +12,18 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.stfalcon.frescoimageviewer.ImageViewer;
 
 import mk.ukim.finki.djesba.R;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageViewHolder> {
     ArrayList<MessageObject> messageList;
+
+    public static final int MSG_TYPE_LEFT = 0;
+    public static final int MSG_TYPE_RIGHT = 1;
+    FirebaseUser user;
 
     public MessageAdapter(ArrayList<MessageObject> messageList) {
         this.messageList = messageList;
@@ -26,13 +32,23 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
     @NonNull
     @Override
     public MessageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        //za svaki slucaj, da ne go prevzeme RecyclerView celiot ekran
-        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_message,null,false);
-        RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        layoutView.setLayoutParams(lp);
+        if (viewType == MSG_TYPE_LEFT){
+            //za svaki slucaj, da ne go prevzeme RecyclerView celiot ekran
+            View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_item_left,null,false);
+            RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            layoutView.setLayoutParams(lp);
 
-        MessageViewHolder rcv = new MessageViewHolder(layoutView);
-        return rcv;
+            MessageViewHolder rcv = new MessageViewHolder(layoutView);
+            return rcv;
+        } else {
+            //za svaki slucaj, da ne go prevzeme RecyclerView celiot ekran
+            View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_item_right,null,false);
+            RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            layoutView.setLayoutParams(lp);
+
+            MessageViewHolder rcv = new MessageViewHolder(layoutView);
+            return rcv;
+        }
     }
 
     @Override
@@ -72,5 +88,14 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             mSender = view.findViewById(R.id.sender);
             mViewMedia = view.findViewById(R.id.viewMedia);
         }
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        if (messageList.get(position).getSenderId().equals(user.getUid())){
+            return MSG_TYPE_RIGHT;
+        } else
+            return MSG_TYPE_LEFT;
     }
 }
