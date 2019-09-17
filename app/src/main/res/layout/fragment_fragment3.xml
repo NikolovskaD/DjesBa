@@ -33,11 +33,20 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
 
-        android:layout_marginBottom="50sp"
+        android:layout_marginBottom="30sp"
         android:padding="10sp"
         android:textAlignment="center"
         android:text="With DjesBa you can take your glasses off and enjoy the moment, your friends are just a couple of messages away.\nBe a polite Balkan citizen, use DjesBa!" />
 
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="Enter Your Name"
+        android:textColorHint="#11001a"
+        android:inputType="text"
+        android:layout_marginBottom="20sp"/>
 
 
         <TextView
@@ -50,6 +59,9 @@
             android:focusable="true"
             android:textSize="20sp"
             android:textColor="@color/colorPrimary"/>
+
+
+
 
 
 
