@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="30dp"
+    android:background="@drawable/gradient_bg"
+    android:gravity="center"
+    tools:context=".Fragment3">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="250sp"
+        android:layout_height="250sp"
+        android:src="@drawable/rocket2" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="26sp"
+        android:layout_marginTop="40sp"
+        android:layout_marginBottom="20sp"
+        android:textColor="@color/colorAccent"
+        android:text="Enjoy!" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+
+        android:layout_marginBottom="50sp"
+        android:padding="10sp"
+        android:text="With DjesBa you can take your glasses off and enjoy the moment, your friends are just a message away.\nBe a polite Balkan citizen, use DjesBa!" />
+
+
+
+        <TextView
+            android:id="@+id/done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="bottom|end"
+            android:text="Finish"
+            android:clickable="true"
+            android:focusable="true"
+            android:textSize="20sp"
+            android:textColor="@color/colorPrimary"/>
+
+
+
+</LinearLayout>

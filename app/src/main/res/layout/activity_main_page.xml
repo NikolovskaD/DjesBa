@@ -39,6 +39,8 @@
            android:layout_height="wrap_content"
            android:id="@+id/chatList"/>
    -->
+
+
     <include
         layout="@layout/toolbar_layout"/>
 
