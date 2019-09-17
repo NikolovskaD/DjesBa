@@ -122,7 +122,7 @@ public class LoginActivity extends AppCompatActivity {
     private void userIsLoggedIn() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null){
-            startActivity(new Intent(getApplicationContext(),IntroActivity.class));
+            startActivity(new Intent(getApplicationContext(),SplashActivity.class));
             finish();
             return;
         }

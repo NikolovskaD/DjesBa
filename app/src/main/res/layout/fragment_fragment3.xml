@@ -8,7 +8,7 @@
     android:padding="30dp"
     android:background="@drawable/gradient_bg"
     android:gravity="center"
-    tools:context=".Fragment3">
+    tools:context=".Fragments.Fragment3">
 
 
     <ImageView
@@ -35,7 +35,8 @@
 
         android:layout_marginBottom="50sp"
         android:padding="10sp"
-        android:text="With DjesBa you can take your glasses off and enjoy the moment, your friends are just a message away.\nBe a polite Balkan citizen, use DjesBa!" />
+        android:textAlignment="center"
+        android:text="With DjesBa you can take your glasses off and enjoy the moment, your friends are just a couple of messages away.\nBe a polite Balkan citizen, use DjesBa!" />
 
 
 

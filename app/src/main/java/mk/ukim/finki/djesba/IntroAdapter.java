@@ -1,12 +1,11 @@
 package mk.ukim.finki.djesba;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import mk.ukim.finki.djesba.Fragment1;
-import mk.ukim.finki.djesba.Fragment2;
-import mk.ukim.finki.djesba.Fragment3;
+import mk.ukim.finki.djesba.Fragments.Fragment1;
+import mk.ukim.finki.djesba.Fragments.Fragment2;
+import mk.ukim.finki.djesba.Fragments.Fragment3;
 
 public class IntroAdapter extends FragmentPagerAdapter {
 

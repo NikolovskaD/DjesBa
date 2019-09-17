@@ -1,4 +1,4 @@
-package mk.ukim.finki.djesba;
+package mk.ukim.finki.djesba.Fragments;
 
 
 import android.app.Activity;
@@ -7,6 +7,8 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
+import mk.ukim.finki.djesba.MainPageActivity;
+import mk.ukim.finki.djesba.R;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,7 +43,7 @@ public class Fragment3 extends Fragment {
             public void onClick(View v) {
                 // prodolzi so MainPageActivity
                 //getActivity().getFragmentManager().beginTransaction().remove(this).commit();
-                startActivity(new Intent(getContext(),MainPageActivity.class));
+                startActivity(new Intent(getContext(), MainPageActivity.class));
             }
         });
 

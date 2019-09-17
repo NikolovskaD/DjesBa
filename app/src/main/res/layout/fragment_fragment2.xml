@@ -8,7 +8,7 @@
     android:padding="30dp"
     android:background="@drawable/gradient_bg"
     android:gravity="center"
-    tools:context=".Fragment2">
+    tools:context=".Fragments.Fragment2">
 
 
     <ImageView
@@ -34,6 +34,7 @@
         android:textSize="18sp"
         android:layout_marginBottom="50sp"
         android:padding="10sp"
+        android:textAlignment="center"
         android:text="Don't be a typical Balcan 'snajper-baba' waiting on your balcony for friends to appear!" />
 
 

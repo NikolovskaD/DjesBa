@@ -1,9 +1,10 @@
-package mk.ukim.finki.djesba;
+package mk.ukim.finki.djesba.Fragments;
 
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import mk.ukim.finki.djesba.R;
 
 import android.view.LayoutInflater;
 import android.view.View;
